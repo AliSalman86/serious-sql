@@ -54,3 +54,38 @@ SELECT * FROM sample_table ORDER BY column_a, column_b DESC;
 SELECT * FROM sample_table ORDER BY column_b, column_a DESC;
 /* also sort for all columns can be in descending order */
 SELECT * FROM sample_table ORDER BY column_a DESC, column_b DESC;
+
+/* Employees seniority in years: the below script retuen the seniority for each employee in years by caculating difference between hiring day and current day */
+SELECT
+  first_name
+  ,last_name
+  ,hire_date
+  ,DATE_PART('year', NOW()::date)-DATE_PART('year', hire_date::date) AS seniority_in_years
+FROM employees.employee;
+
+/* Records COUNT and DISTINCT values */
+/* Records count example */
+SELECT COUNT(*) AS rows_count FROM dvd_rentals.film_list;
+
+/* Distinct values example */
+SELECT DISTINCT rating AS dist_rating FROM dvd_rentals.film;
+
+/* Distinct combination of multiple columns */
+SELECT DISTINCT category, rating FROM dvd_rentals.film_list;
+
+/* COUNT of DISTINCT values */
+SELECT COUNT(DISTINCT category) AS unique_cat_count FROM dvd_rentals.film_list;
+
+/* Count frequency of occurance, GROUP BY COUNT */
+SELECT category, COUNT(*) AS frequency FROM dvd_rentals.film_list GROUP BY category
+
+/* Employees seniority in years: This second script shows the frequency of employees with same years seniority */
+SELECT
+  DATE_PART('year', NOW()::date)-DATE_PART('year', hire_date::date) AS seniority_in_years
+  ,COUNT(*)
+FROM employees.employee
+GROUP BY seniority_in_years
+ORDER BY seniority_in_years DESC;
+
+/* GROUP BY COUNT */
+SELECT rating, COUNT(*) AS frequency FROM dvd_rentals.film_list GROUP BY rating ORDER BY frequency DESC;
