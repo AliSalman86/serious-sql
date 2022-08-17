@@ -88,4 +88,18 @@ GROUP BY seniority_in_years
 ORDER BY seniority_in_years DESC;
 
 /* GROUP BY COUNT */
-SELECT rating, COUNT(*) AS frequency FROM dvd_rentals.film_list GROUP BY rating ORDER BY frequency DESC;
+SELECT 
+  rating, 
+  COUNT(*) AS frequency
+FROM dvd_rentals.film_list 
+GROUP BY rating 
+ORDER BY frequency DESC;
+
+/* GROUP BY COUNT, calculating percentage */
+SELECT 
+  rating
+  ,COUNT(*) AS frequency
+  ,COUNT(*)::NUMERIC / SUM(COUNT(*)) OVER() AS percentage
+FROM dvd_rentals.film_list
+GROUP BY rating
+ORDER BY frequency DESC;
