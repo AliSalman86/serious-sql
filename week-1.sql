@@ -103,3 +103,60 @@ SELECT
 FROM dvd_rentals.film_list
 GROUP BY rating
 ORDER BY frequency DESC;
+
+/* Example: */
+
+/* Which customer_id had the latest rental_date for inventory_id = 1 and 2? */
+SELECT inventory_id, customer_id, rental_date
+FROM dvd_rentals.rental
+ORDER BY inventory_id, rental_date DESC
+LIMIT 8;
+
+/* In the dvd_rentals.sales_by_film_category table, which category has the highest total_sales? */
+SELECT category, total_sales
+FROM dvd_rentals.sales_by_film_category
+ORDER BY total_sales DESC
+LIMIT 1;
+
+/* Exercises: */
+
+/* What is the name of the category with the highest category_id in the dvd_rentals.category table? */
+SELECT 
+name,
+category,
+category_id
+FROM 
+  dvd_rentals.category
+ORDER BY 
+  category_id DESC;
+
+/* For the films with the longest length, what is the title of the “R” rated film with the lowest replacement_cost in dvd_rentals.film table? */
+SELECT
+  title,
+  length,
+  rating,
+  replacement_cost
+FROM dvd_rentals.film
+ORDER BY
+  length DESC,
+  rating DESC,
+  replacement_cost;
+
+/* Who was the manager of the store with the highest total_sales in the dvd_rentals.sales_by_store table? */
+SELECT
+  manager,
+  total_sales
+FROM
+  dvd_rentals.sales_by_store
+ORDER BY
+  total_sales DESC;
+  
+/* What is the postal_code of the city with the 5th highest city_id in the dvd_rentals.address table? */
+SELECT 
+  city_id,
+  postal_code
+FROM 
+  dvd_rentals.address
+ORDER BY
+  city_id DESC
+LIMIT 5;
