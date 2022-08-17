@@ -18,9 +18,9 @@ Then you can make a list of bullet points:
 
 We can also add images using a few methods as long as the file is in the right path!
 
-<img alt="alternate text goes here" src="./lets-do-this.jpg" width="60%" />
+<img alt="alternate text goes here" src="./images/lets-do-this.jpg" width="60%" />
 
-![You can add some alternate text here](./doh.jpg)
+![You can add some alternate text here](./images/doh.jpg)
 
 Finally - we can add code chunks like so to have SQL syntax highlighting turned on:
 
